@@ -9,22 +9,22 @@ public class BugHunt {
 
             // Diese Schleife soll alle GERADEN Zahlen zwischen 1 und 20 (inklusive 20) ausgeben.
             // Jede Zahl soll in einer eigenen Zeile ausgegeben werden.
-            while (i <= 60) {
-                if (i % 3 == 0) {
-                    System.out.println(i/3);
+            while (i <= 20) {
+                if (i % 2 == 0) {   //<- darf nicht bearbeitet werden
+                    System.out.println(i);
                 }
-
                 i++;
             }
         } else if(Integer.parseInt(args[0]) == 1) {
 
             // Diese Schleife soll alle UNGERADEN Zahlen zwischen 1 und 20 (inklusive 1) ausgeben.
             // Jede Zahl soll in einer eigenen Zeile ausgegeben werden.
-            while (i <= 80) {
+            while (i <= 20) {
                 if (i % 2 != 0) {
-                    System.out.print(i/4);
+                    System.out.println(i);
                 }
-                i += 4;
+
+                i++;
             }
         }
     }
