@@ -1,0 +1,4 @@
+hans100 5
+peter200 10
+martin300 7
+wiebke400 8
