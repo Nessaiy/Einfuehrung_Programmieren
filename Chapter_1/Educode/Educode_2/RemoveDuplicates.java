@@ -1,20 +1,33 @@
 public class RemoveDuplicates {
-    /*
-    Schreiben Sie ein Programm RemoveDuplicates , welches eine beliebige Menge ganzer Zahlen von der Standard-Eingabe einliest.
 
-Ihr Programm soll die Werte auf der Konsole ausgeben, wobei sich wiederholende, direkt aufeinanderfolgende Werte nur einmal ausgeben werden sollen.
-
-Beispiel:
-
-> cat input.txt
-1 1 2 2 1 1 3 4 6 2 1
-> java RemoveDuplicates < input.txt
-1 2 1 3 4 6 2 1
-Ihre Ausgabe darf vor und nach den Zahlen beliebig viele Leerzeichen enthalten.
-
-EduCode schreibt automatisch Zahlen in die Standardeingabe Ihres Programms.
-*/
     public static void main(String[] args){
+        int a = args.length;
+        double[] arr = new double[a];
+        int counter1 = 0;
+
+        while (!StdIn.isEmpty()) {
+                arr[counter1] = StdIn.readDouble();
+                counter1++; 
+        }
+
+
+        double current = arr[0];
+        boolean found = false;
         
+        for (int i = 0; i < arr.length; i++) {
+            if (current == arr[i] && !found) {
+                found = true;
+            } else if (current != arr[i]) {
+                System.out.println(current);
+                current = arr[i];
+                found = false;
+            }
+        }
+        System.out.println(current);
     }
 }
+
+
+
+
+ 
