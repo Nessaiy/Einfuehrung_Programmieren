@@ -12,56 +12,48 @@ public class Plateau {
         Kein Plateau
     */
     public static void main(String[] args){
+        //Abbruch
         if (args.length < 3){
             System.out.println("ERROR");
             return;
         }
-        //"2", "3", "3", "3", "3", "1", "2", "2", "2", "2", "1", "4", "4", "4", "4", "3"
-        int[] a = new int[args.length];
-        for (int i=0; i < args.length; i++){
-            a[i] = Integer.parseInt(args[i]);
+
+        int[] A = new int[args.length];
+        for (int z = 0; z < args.length; z++ ) {
+            A[z] = Integer.parseInt(args[z]);
         }
 
-        int zaehler = 0;						        // zeahler zaehlt die Durchlaeufe bei einer gleichen Zahl
-		int aktuellerWert = a[0];				        // aktuellerWert wird auf den ersten Wert des Arrays gesetzt (=0)
-        int hoechsterZaehler = 0;
-        int stelle = 0;
+        //Startwerte
+        int curStart = -1;
+        int curLength = 0; 
+        int maxStart = -1; 
+        int maxLength = 0; 
 
-        boolean test = true; //Aufsteigend?
-        for (int i = 0; i < a.length-1; i++){
-            if (a[i+1]<a[i]){
-                test = false;
+
+        for (int z = 0; z< A.length - 1; z++) {
+            if (A[z] < A[z+1]) {
+                curStart = z + 1;
+                curLength = 1;
             }
-        }
-        if (test){  //wenn aufsteigend, dann kein plateau und main beenden
-            System.out.print("Kein Plateau");
-            System.exit(0);
-        }
 
-        
-		for (int i = 0; i < a.length; i++) {
-			int neuerWert = a[i];				        // im ersten Durchlauf sind neuerWert und aktueller Wert identisch
-			if (neuerWert == aktuellerWert) {			// wenn neuerWert gleich aktuellerWert dann:
-				zaehler += 1;							// soll die Durchlaeufe zaehlen, pro wiederholte (gleiche) Zahl +1 dazuzaehlen
-                if (zaehler > hoechsterZaehler) {		// wenn der aktuelle zaehler groeßer als der letzte hoechsterZaehler ist, dann:
-                    hoechsterZaehler = zaehler;			// hoechsterZaehler auf aktuelle zaehler setzen
-                    stelle = i + 1 - zaehler;
-				}
-			} else if (neuerWert < aktuellerWert) {		// sonst: wenn neuerWert kleiner als aktuellerWert dann Schleifendurchlauf abbrechen und neuen Durchlauf beginnen
-				aktuellerWert = a[i];					// sobald eine kleinerer Wert auftritt, wird auch hier der aktuelleWert auf i gesetzt
-                zaehler = 0;							// zaehler wird auf 1 gesetzt      
-                continue;                       
-			}
-			aktuellerWert = a[i];						// aktuellerWert wird wieder auf i gesetzt (entsprechender Wert)
-        }
+            if (A[z] == A[z+1]) {
+                curLength++;
+            }
 
-        if (args.length == 3){                          // stelle funzt sonst bei 1 2 1 nicht
-            stelle = 1;
-        }
-    
-        System.out.print(hoechsterZaehler + " ");
-        System.out.print(stelle);
+            if (A[z] > A[z+1]) {
+                if (curLength > maxLength) {
+                    maxLength = curLength;
+                    maxStart = curStart;
+                }
+            }
 
+
+        }
+        if (maxStart != -1){ 
+            System.out.println(maxStart + " " + maxLength);
+        } else {
+            System.out.println("Kein Plateau");
+        }
 
     }//main
 }//class
