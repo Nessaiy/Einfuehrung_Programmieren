@@ -16,13 +16,13 @@ public class Plateau {
             System.out.println("ERROR");
             return;
         }
-
+        //"2", "3", "3", "3", "3", "1", "2", "2", "2", "2", "1", "4", "4", "4", "4", "3"
         int[] a = new int[args.length];
         for (int i=0; i < args.length; i++){
             a[i] = Integer.parseInt(args[i]);
         }
 
-        int zaehler = 1;						        // zeahler zaehlt die Durchlaeufe bei einer gleichen Zahl
+        int zaehler = 0;						        // zeahler zaehlt die Durchlaeufe bei einer gleichen Zahl
 		int aktuellerWert = a[0];				        // aktuellerWert wird auf den ersten Wert des Arrays gesetzt (=0)
         int hoechsterZaehler = 0;
         int stelle = 0;
@@ -49,7 +49,7 @@ public class Plateau {
 				}
 			} else if (neuerWert < aktuellerWert) {		// sonst: wenn neuerWert kleiner als aktuellerWert dann Schleifendurchlauf abbrechen und neuen Durchlauf beginnen
 				aktuellerWert = a[i];					// sobald eine kleinerer Wert auftritt, wird auch hier der aktuelleWert auf i gesetzt
-                zaehler = 1;							// zaehler wird auf 1 gesetzt      
+                zaehler = 0;							// zaehler wird auf 1 gesetzt      
                 continue;                       
 			}
 			aktuellerWert = a[i];						// aktuellerWert wird wieder auf i gesetzt (entsprechender Wert)
@@ -60,7 +60,7 @@ public class Plateau {
         }
     
         System.out.print(hoechsterZaehler + " ");
-        System.out.println(stelle);
+        System.out.print(stelle);
 
 
     }//main
